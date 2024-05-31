@@ -1,9 +1,6 @@
 \documentclass[12pt]{amsart}
 \usepackage{amsthm}
 \usepackage{hyperref}
-\hypersetup{
-	hidelinks
-}
 \usepackage{a4wide}
 \usepackage{array, xcolor}
 \usepackage{amsfonts}
@@ -62,7 +59,6 @@
 \newcommand{\slinear}{\operatorname{SL}}
 \newcommand{\diam}{\operatorname{Diam}}
 \newcommand{\so}{\operatorname{SO}}
-\newcommand{\pso}{\operatorname{PSO}}
 \newcommand{\spin}{\operatorname{Spin}}
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\im}{\operatorname{Im}}
@@ -91,59 +87,62 @@ We study a class function induced by the spin structure on complete oriented hyp
 \maketitle
 
 \section{Introduction}
-Consider $\G\setminus \HH$ an oriented complete hyperbolic surface of finite area, where $\G\subset \psl$ is a Fuchsian group without elliptic ellements and $\HH$ is the hyperbolic plane. These surfaces always admit spin structures, since their Euler class is even. The purpose of this paper is to study a class function $\varepsilon: \G \longrightarrow \{ \pm 1 \}$, namely a function which is constant along conjugacy classes, induced by a spin structure. The class function in question first appeared in \cite{dhockerPhong}, where D'Hocker and Phong prove that determinants of connection laplacians on spinors on Riemann surfaces can be computed in terms of the Selberg zeta function at half integer points. It also appears in \cite{SarnckDeterminantsOfLaplacians}, where a similar statement is proven for Dirac operators; note  that the class function seems to be inadvertently considered as a group morphism, which it is not, as we shall see below. The same functions also appears in \cite{BolteStiepanSelbergForDirac}, a paper where a Seleberg trace formula is proved for Dirac operators on compact hyperbolic surfaces. Later, in \cite{rares}, the author obtains an asymptotic for the Selberg zeta function at some parts of the boundary of the Teichm\" uler space. Here $\varepsilon$ plays a crucial role as the same result cannot hold true for the Laplace operator.
+Consider $\G\setminus \HH$ an oriented complete hyperbolic surface of finite area, where $\G\subset \psl$ is a Fuchsian group without elliptic ellements and $\HH$ is the hyperbolic plane. These surfaces always admit spin structures, since their Euler class is even. The purpose of this paper is to study a class function $\varepsilon: \G \longrightarrow \{ \pm 1 \}$, namely a function which is constant along conjugacy classes, induced by a spin structure. The class function in question first appeared in \cite{dhockerPhong}, where D'Hocker and Phong prove that determinants of connection laplacians on spinors on Riemann surfaces can be computed in terms of the Selberg zeta function at half integer points. It also appears in \cite{SarnckDeterminantsOfLaplacians}, where a similar statement is proven for Dirac operators; note  that the class function seems to be inadvertently considered as a group morphism, which it is not, as we shall see below. We shall see below that this is not the case. The same functions also appears in \cite{BolteStiepanSelbergForDirac}, a paper where a Seleberg trace formula is proved for Dirac operators on compact hyperbolic surfaces. Later, in \cite{rares}, the author obtains an asymptotic for the Selberg zeta function at some parts of the boundary of the Teichm\" uler space. Here $\varepsilon$ plays a crucial role as the same result cannot hold true for the Laplace operator.
 
-Spin structures are well understood in a very wide generality. The novelty in this paper is the rigorous presentation of the class function $\varepsilon$, since it is only briefly introduced in all the above mentioned papers. We start with a brief introduction of spin structures on complete hyperbolic surfaces (for more details see, e.g. \cite{carteMoroianuSpinori, hitchin, lawsonMichelsohn}). For clarity, we will interpret the spinor bundle as $\slinear_2(\RR)$, the group of $2\times2$ matrices of determinant $1$. We give two different definitions for the class functions, one in term of algebraic extensions, and a more geometric one, which for hyperbolic elements is exactly the holonomy along the associated closed geodesics. We prove, in Theorem \ref{teoremEgalitateDefinitii}, that these two definitions are equivalent.
+Spin structures are well understood in a very wide generality. The novelty in this paper is the rigorous presentation of the class function $\varepsilon$, since it is only briefly introduced in all the above mentioned papers. We start with a brief introduction of spin structures on general manifolds (for more details see, e.g. \cite{carteMoroianuSpinori, hitchin, lawsonMichelsohn}) and afterwards restrict ourselves to oriented complete hyperbolic surfaces. These surfaces can be regarded as $\G\setminus \HH$, where $\HH$ is the hyperbolic plane and $\G$ is a discrete subgroup of $\psl$. For clarity, we will interpret the spinor bundle as the group of $2\times2$ matrices of determinant $1$, $\slinear_2(\RR)$. We give two different definitions for the class functions, one in term of algebraic extensions, and a more geometric one, which for hyperbolic elements is exactly the holonomy along the associated closed geodesics. We prove, in Theorem \ref{teoremEgalitateDefinitii}, that these two definitions are equivalent.
 
 \subsection*{Acknowledgements} 
 I would like to thank Sergiu Moroianu for his advise during the preparation of this paper. I am also grateful to Léo Bénard, Laura Monk, Bernd Ammann and Julian Seipel for their valuable conversations and input.
 
 \subsection*{Funding}
-The author of this paper is partly supported by the PNRR-III-C9-2023-I8 grant CF 149/31.07.2023 {\em Conformal Aspects of Geometry and Dynamics}.
+The author was partially supported from the project PNRR–III-C9–2023–I8.
 
-\section{Spin structures on hyperbolic surfaces} 
-Consider $\RR^2$ endowed with the standard scalar product. The \emph{Clifford algebra} $\cl_2$ is the quotient of the tensor algebra $T(\RR^2):=\oplus_{j=0}^{\infty} (\RR^2)^{\otimes j}$ by the \emph{Clifford ideal}, that is the ideal generated by all the tensors of the form $v\otimes v + \|v \|^2$. The \emph{spin group} $\spin(2)$ is the group of even products of unit vectors. It is a connected, two-sheeted covering for the special orthogonal group: 
-\begin{align*}
-\so(2):=\left\lbrace R_{\theta}:= \begin{bmatrix}
-\cos \theta & -\sin \theta\\
-\sin \theta & \cos \theta
-\end{bmatrix}
-:\theta\in [0,2\pi] \right\rbrace
-\end{align*}
-In terms of the standard basis $\{e_1,e_2 \}$ of $\RR^2$ it is easy to see that:
+\section{Spin structures on Riemannian manifolds}
+For a positive integer $n$ consider the vector space $\RR^n$ endowed with the standard scalar product. The \emph{Clifford algebra} $\cl_n$ is the quotient of the tensor algebra $T(\RR^n):=\oplus_{j=0}^{\infty} (\RR^n)^{\otimes j}$ by the \emph{Clifford ideal}, that is the ideal generated by all the tensors of the form $v\otimes v + \|v \|^2$. The \emph{spin group} $\spin(n)$ is the group of even products of unit vectors. It is a connected, two-sheeted covering for the special orthogonal group $\so(n)$ (the universal cover of $\so(n)$ for $n\geq 3$). 
+Let us compute it now. In terms of the standard basis $\{e_1,e_2 \}$ of $\RR^2$ it is easy to see that:
 \[
 \cl_2 = \RR \oplus e_1\RR \oplus e_2\RR \oplus e_1e_2\RR,
 \]
-which is isomorphic to the field of quaternions. The unit vectors in $\cl_2$ have the form $v=ae_1+be_2$, with $a^2+b^2=1$. Taking a product of two such vectors we get:
+which is isomorphic with the field of quaternions. The unit vectors in $\cl_2$ have the form $v=ae_1+be_2$, with $a^2+b^2=1$. Therefore $\spin(2)$ consists of all the elements of the form:
 \begin{align*}
 vw
 &=
-(ae_1+be_2)(ce_1+de_2)
-=-(ac+bd) + (ad-bc)e_1e_2.
+(ae_1+b_e2)(ce_1+d_e2)
+=-(ac+bd) + (ad-bc)e_1e_2 \\
+&= a' + b' e_1e_2,
 \end{align*}
-Therefore:
+where $(a')^2+(b')^2=1$.
+\begin{remark}\label{spinRotationsIsomorphism}
+It follows that $\spin(2)$ is isomorphic to the group of rotation matrices: 
 \begin{align*}
-\spin(2) = \left\lbrace r_{\theta}:= \cos \theta + \sin \theta e_1 e_2 : \theta \in [0,2\pi]  \right\rbrace.
-\end{align*}
-The covering map from $\spin(2)$ to $\so(2)$ is given by $r_{\theta} \mapsto \left( v \mapsto r_{\theta}vr_{\theta}^{-1} \right)$. In the standard basis of $\RR^2$, this map becomes:
-\begin{align*}
-\pi':\spin(2) \longrightarrow \so(2);
-&&
-\pi'(r_{\theta})=
+\left\lbrace
+R(\theta):=
 \begin{bmatrix}
-\cos 2\theta & -\sin 2\theta\\
-\sin 2\theta & \cos 2\theta 
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
 \end{bmatrix}
-= R_{2\theta}
+:
+\theta \in [0,2\pi]
+\right\rbrace.
+\end{align*}
+\end{remark}
+
+When $n = 2k$, the complexified Clifford algebra $\cl_n \otimes \RR$ is isomorphic to the algebra of complex matrices of order $2^{n/2}$. To see this isomorphism take $\{ e_1,..., e_{2k} \}$ the standard basis in $\RR^n$ and consider $W$ the vector space generated by $\{ 2^{-1/2}(e_1 -ie_2), ..., 2^{-1/2}(e_{2k-1} - ie_{2k}) \}$. Clearly, the representation:
+\[
+cl(v):=\frac{1}{\sqrt{2}}(v-Jv)\wedge(\cdot) - \frac{1}{\sqrt{2}}(v+iJv)\lrcorner(\cdot),
+\]
+where $J$ is the standard almost complex structure, acts on $\Sigma_n:=\wedge^*W$ and can be extended to the tensor algebra $T(\CC^n)$. A simple computation leads us to the conclusion that $cl$ descends to the complexified Clifford algebra:
+\begin{align*}
+cl : \cl_n\otimes_{\RR}\CC \longrightarrow \End_{\CC} (\Sigma_n) \simeq M(2^k ,\CC).
 \end{align*}
 
-Consider now $M$ an oriented Riemannian surface and $P_{\so(2)}M$ the oriented frame bundle. A \emph{spin structure} on $M$ is a $\spin(2)$ principal bundle $P_{\spin(2)}M$ together with a covering map $\pi$, $\pi'$ which makes the following diagram:
+Consider now $M$ an oriented Riemannian manifold and $P_{\so(n)}M$ the oriented frame bundle. A \emph{spin structure} on $M$ is a $\spin(n)$ principal bundle $P_{\spin(n)}M$ together with two covering maps $\pi_1$, $\pi_2$ which makes the following diagram:
 \begin{equation}\label{spinStructureDiagram}
 \begin{tikzpicture}[baseline=(current  bounding  box.center)]
   \matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
   {
-      P_{\text{Spin}(2)} M & \text{Spin}(2) \\
-        P_{\text{SO}(2)} M & \text{SO}(2) \\
+      P_{\text{Spin}(n)} M & \text{Spin}(n) \\
+        P_{\text{SO}(n)} M & \text{SO}(n) \\
 	    M & {} \\  
   };
   \path
@@ -157,65 +156,39 @@ Consider now $M$ an oriented Riemannian surface and $P_{\so(2)}M$ the oriented f
   	(m-2-1) edge node [left] {} (m-3-1);
 \end{tikzpicture}
 \end{equation}
-satisfy $\pi(xr_{\theta}) = \pi(x) \pi'(r_{\theta})$ for any $r_{\theta}\in \spin(2)$ and $x \in P_{\spin(2)} M$.
+satisfy $\pi(xs) = \pi(x) \pi'(s)$ for any $s\in \spin(n)$ and $x \in P_{\spin(n)} M$.
 
-
+\section{Spin structures on hyperbolic surfaces}
+We shall focus on oriented complete hyperbolic surfaces form now on. These are smooth oriented surfaces of constant curvature $-1$. From Hadamard's theorem we know that there exists a unique simply connected, complete, hyperbolic surface up to isometry. 
 \subsection{The hyperbolic plane}
-From Hadamard's theorem we know that there exists a unique simply connected, complete, hyperbolic surface up to isometry. One can use many models of this unique surface, but for the purpose of this paper we will restrict ourselves to the hyperbolic plane, namely the upper half plane endowed with a metric of constant curvature $-1$:
+One can use many models of this unique surface, but for the purpose of this paper we will restrict ourselves to the hyperbolic plane. Recall that the hyperbolic plane is the upper half plane endowed with a metric of constant curvature $-1$:
 \[
 \HH := \left( \{ (x,y)\in \RR^2 : \ y>0 \}, \ g=\frac{dx^2+ dy^2}{y^2} \right).
 \]
-We will show that $\HH$ admits a unique spin structure, namely $\slinear_2(\RR)$. The orientation preserving isometries of $\HH$ are given by the group: \[
-\psl := \slinear_2(\RR) / \{\pm 1 \}
-\] 
-with the action:
+We show that $\HH$ admits a spin structure and, moreover, the bundle $P_{\spin(2)}\HH$ can be identified with $\slinear_2(\RR)$ as $\spin(2)$ principal bundles. The orientation preserving isometries of $\HH$ are given by the group $\psl := \slinear_2(\RR) / \{\pm 1 \}$ with the action:
 \begin{align*}
 \g z = \frac{az+b}{cz+d}, && \g= \begin{bmatrix} a & b \\
                                                                                   c & d   \end{bmatrix} \in \slinear_2(\RR),
 \end{align*}
-for any $z = x+iy\in \CC \simeq \RR^2$ with $\Im (z) >0$. Through direct computations, one can see that a given orientation preserving isometry can be completely determined by the way it moves a point and a vector at that point. Clearly, the group of applications:
-\begin{align*}
-\pso(2):=\left\lbrace [R_{\theta}]:= \left( z  \mapsto \frac{z\cos \theta - \sin \theta}{z\sin \theta + \cos \theta} \right) : \theta \in [0, \pi] \right\rbrace,
-\end{align*}
-acts to the right on $\psl$. Defining the isomorphisms $F:\psl \longrightarrow P_{\so(2)}\HH$ and $f:\pso(2) \longrightarrow \so(2)$ by:
-\begin{align*}
-&F(\g)
-:=
-\left( \g i, \left\{ \g_{*,i} \left( \frac{\partial}{\partial x} \right) ,\g_{*,i} \left( \frac{\partial}{\partial y} \right) \right\} \right), \\
-&f([R_{\theta}])
-:=
-R_{2\theta},
-\end{align*}
-one can easily see that the diagram:
-\begin{equation*}
-\begin{tikzpicture}[baseline=(current  bounding  box.center)]
-  \matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
-  {
-      \psl & \pso(2) \\
-      P_{\so(2)}\HH & \so(2) \\
-  };
-  \path
-    (m-1-1) edge node [ above] {} (m-1-2)
-    (m-2-1)	edge node [below] {} (m-2-2);
-    
-    
-  \path[->] 
-  	(m-1-1) edge node [left] {$F$} (m-2-1)
-  	(m-1-2)	edge node [right] {$f$} (m-2-2);
-\end{tikzpicture}
-\end{equation*}
-is compatible with the principal bundle structure. It follows that $\psl$ is the $\pso(2)\simeq\so(2)$ principal frame bundle of $\HH$. Moreover, the left action induced by orientation preserving isometries (i.e. $\psl$) to the orthonormal frame bundle $P_{\so(2)}\HH$:
+for any $z = x+iy\in \CC \simeq \RR^2$ with $\Im z >0$. Through direct computations one can see that a given orientation preserving isometry can be completely determined by the way it moves a point and a vector at that point. The mapping:
+\begin{align}\label{pslTangenSpaceIdentification}
+\g \mapsto \left( \g i, \left\{ \g_{*,i} \left( \frac{\partial}{\partial x} \right) ,\g_{*,i} \left( \frac{\partial}{\partial y} \right) \right\} \right).
+\end{align} is well defined for products of isometries as well. Hence the oriented orthogonal frame bundle $P_{\so(2)}\HH$ and $\psl$ can be identified as $\so(2)$ principal bundles. Moreover, the action induced by orientation preserving isometries to the orthonormal frame bundle:
 \begin{align*}
 \g_*:P_{\so (2)}\HH\longrightarrow P_{\so (2)}\HH, && 
 \g_*\left(z, \{ v_1, v_2 \} \right) = \left( \g z, \{ \g_{*,z}v_1, \g_{*,z}v_2 \} \right),
 \end{align*}
-is transformed by the inverse of $F$ into the left multiplication.
+is transformed by the previous mapping into the left multiplication:
+\begin{align*}
+\g:\psl \longrightarrow \psl, && 
+\g(\eta) = \g \eta.
+\end{align*}
 
 \begin{proposition}\label{spinStructureForH}
-$\slinear_2(\RR)$ is a $\spin(2)$ principal bundle over $\HH$. Moreover, with the projections $\pi': \spin(2)\simeq \{R_{\theta}:\theta\in [0,2\pi] \} \longrightarrow \so(2)\simeq \{R_{\theta}:\theta\in [0,2\pi] \}$ and $\pi: \slinear_2(\RR) \longrightarrow \psl$ defined by:
+$\slinear_2(\RR)$ is a $\spin(2)$ principal bundle over $\HH$. Moreover, with the projections $\pi': \spin(2)\simeq \{R(\theta):\theta\in [0,2\pi] \} \longrightarrow \so(2)\simeq \{R(\theta):\theta\in [0,2\pi] \}$ and $\pi: \slinear_2(\RR) \longrightarrow \psl$ defined by:
 \begin{align*}
-\pi'(R_{\theta})
-&= R_{-2\theta};\\
+\pi'(R(\theta))
+&= R(-2\theta);\\
 \pi\left(
 \begin{bmatrix}
 a & b\\
@@ -274,27 +247,27 @@ A &=
 \end{bmatrix}
 \\
 &
-=: T(\Re(Ai))D\left(\sqrt{\Im(Ai)}\right)R_{\theta}
+=: T(\Re(Ai))D\left(\sqrt{\Im(Ai)}\right)R(\theta)
 ,
 \end{align*}
 for some $\theta \in [0,2\pi]$. Thus, the fibre over $\HH$ at a given point $z=Ai$ is given by all the matrices that map $i$ into $z$, namely:
 \begin{align*}
 (\slinear_2(\RR))_z = 
 \left\lbrace
-T(\Re z)D\left( \sqrt{\Im z}\right) R_{\theta}
+T(\Re z)D\left( \sqrt{\Im z}\right) R(\theta)
 :
 \theta \in [0,2\pi]
 \right\rbrace.
 \end{align*}
 Clearly, the group $\left\lbrace
-R_{\theta}
+R(\theta)
 :
 \theta \in [0,2\pi]
 \right\rbrace$ acts freely and transitively on the fibres $(\slinear_2(\RR))_z$ and thus $\slinear_2(\RR)$ is a principal bundle with group $\spin(2)$ over $\HH$. 
 
 For the second part, notice that the isometries $(z\mapsto T(\Im z))$ and $(z\mapsto D(\sqrt{\Re z)})$ act as the identity on the oriented frames. Therefore it is enough to check that the diagram $(\ref{spinStructureHDiagram})$ is commutative only for matrices in the fibre over $i\in \HH$:
 \begin{align*}
-(R_{\theta})_{*,i}\left( \frac{\partial}{\partial x} \right)
+R(\theta)_{*,i}\left( \frac{\partial}{\partial x} \right)
 &=
 \left. \frac{\partial}{\partial x} \right|_{x+iy=i} \left( \frac{x\cos \theta + iy\cos \theta - \sin \theta}{x\sin \theta + iy\sin \theta + \cos \theta} \right) = \cos 2\theta - i \sin 2\theta
 \simeq 
@@ -303,7 +276,7 @@ For the second part, notice that the isometries $(z\mapsto T(\Im z))$ and $(z\ma
 -\sin 2\theta
 \end{bmatrix}
 ;\\
-(R_{\theta})_{*,i}\left( \frac{\partial}{\partial y} \right)
+R(\theta)_{*,i}\left( \frac{\partial}{\partial y} \right)
 &=
 \left. \frac{\partial}{\partial y} \right|_{x+iy=i} \left( \frac{x\cos \theta + iy\cos \theta - \sin \theta}{x\sin \theta + iy\sin \theta + \cos \theta} \right) = i(\cos 2\theta - i \sin 2\theta)
 \simeq 
@@ -315,15 +288,15 @@ For the second part, notice that the isometries $(z\mapsto T(\Im z))$ and $(z\ma
 \end{align*}
 This leads to:
 \begin{align*}
-(R_{\theta})_{*,i}:T_i\HH \longrightarrow T_i\HH
+R(\theta)_{*,i}:T_i\HH \longrightarrow T_i\HH
 &&
-(R_{\theta})_{*,i}\simeq
+R(\theta)_{*,i}\simeq
 \begin{bmatrix}
 \cos 2\theta & \sin 2\theta \\
 -\sin 2\theta & \cos 2\theta
 \end{bmatrix},
 \end{align*}
-and thus $\pi(R_{\theta})=R(-2\theta)=\pi(I_2)\pi'(R_{\theta})$.
+and thus $\pi(R(\theta))=R(-2\theta)=\pi(I_2)\pi'(R(\theta))$.
 \end{proof}
 
 \begin{proposition}\label{oneSpinStructure}
@@ -400,7 +373,7 @@ Clearly, from Proposition \ref{spinStructureForH}, the quotient $\rho(\G)\setmin
 \end{equation*}
 is commutative, since:
 \begin{align*}
-\pi([AR_{\theta}])=[\pi(AR_{\theta}]=[\pi(A)\pi'(R_{\theta})]=\pi([A])R(-2\theta).
+\pi([AR(\theta)])=[\pi(AR(\theta)]=[\pi(A)\pi'(R(\theta))]=\pi([A])R(-2\theta).
 \end{align*}
 
 Now let us consider a spin structure on $\G \setminus \HH$ and denote by $p:\HH \longrightarrow \G\setminus \HH$ the canonical projection. Since the group $\G$ acts on the frame bundle over $\HH$, we get that the pull-back bundle $p^*(P_{\so(2)}(\G\setminus \HH))$ is isomorphic to $P_{\so(2)} \HH$. We consider the following pull-back:
