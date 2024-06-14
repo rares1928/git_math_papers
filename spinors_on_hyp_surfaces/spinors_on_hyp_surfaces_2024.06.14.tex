@@ -137,27 +137,29 @@ The covering map from $\spin(2)$ to $\so(2)$ is given by $r_{\theta} \mapsto \le
 = R_{2\theta}
 \end{align*}
 
-Consider now $M$ an oriented Riemannian surface and $P_{\so(2)}M$ the oriented frame bundle. A \emph{spin structure} on $M$ is a $\spin(2)$ principal bundle $P_{\spin(2)}M$ together with a covering map $\pi$, $\pi'$ which makes the following diagram:
-\begin{equation}\label{spinStructureDiagram}
-\begin{tikzpicture}[baseline=(current  bounding  box.center)]
-  \matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
-  {
-      P_{\text{Spin}(2)} M & \text{Spin}(2) \\
-        P_{\text{SO}(2)} M & \text{SO}(2) \\
-	    M & {} \\  
-  };
-  \path
-    (m-1-1) edge node [ above] {} (m-1-2)
-    (m-2-1) edge node [below] {} (m-2-2);
-    
-    
-  \path[->] 
-  	(m-1-1) edge node [left]{$\pi$} (m-2-1)
-  	(m-1-2) edge node [right] {$\pi'$} (m-2-2)
-  	(m-2-1) edge node [left] {} (m-3-1);
-\end{tikzpicture}
-\end{equation}
-satisfy $\pi(xr_{\theta}) = \pi(x) \pi'(r_{\theta})$ for any $r_{\theta}\in \spin(2)$ and $x \in P_{\spin(2)} M$.
+\begin{definition}\label{def-spinstructure}
+	Consider now $M$ an oriented Riemannian surface and $P_{\so(2)}M$ the oriented frame bundle. A \emph{spin structure} on $M$ is a $\spin(2)$ principal bundle $P_{\spin(2)}M$ together with a covering map $\pi$, $\pi'$ which makes the following diagram:
+	\begin{equation}\label{spinStructureDiagram}
+		\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+			\matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
+			{
+				P_{\text{Spin}(2)} M & \text{Spin}(2) \\
+				P_{\text{SO}(2)} M & \text{SO}(2) \\
+				M & {} \\  
+			};
+			\path
+			(m-1-1) edge node [ above] {} (m-1-2)
+			(m-2-1) edge node [below] {} (m-2-2);
+			
+			
+			\path[->] 
+			(m-1-1) edge node [left]{$\pi$} (m-2-1)
+			(m-1-2) edge node [right] {$\pi'$} (m-2-2)
+			(m-2-1) edge node [left] {} (m-3-1);
+		\end{tikzpicture}
+	\end{equation}
+	satisfy $\pi(xr_{\theta}) = \pi(x) \pi'(r_{\theta})$ for any $r_{\theta}\in \spin(2)$ and $x \in P_{\spin(2)} M$.
+\end{definition}
 
 
 \subsection{The hyperbolic plane}
@@ -212,50 +214,40 @@ is compatible with the principal bundle structure. It follows that $\psl$ is the
 is transformed by the inverse of $F$ into the left multiplication.
 
 \begin{proposition}\label{spinStructureForH}
-$\slinear_2(\RR)$ is a $\spin(2)$ principal bundle over $\HH$. Moreover, with the projections $\pi': \spin(2)\simeq \{R_{\theta}:\theta\in [0,2\pi] \} \longrightarrow \so(2)\simeq \{R_{\theta}:\theta\in [0,2\pi] \}$ and $\pi: \slinear_2(\RR) \longrightarrow \psl$ defined by:
-\begin{align*}
-\pi'(R_{\theta})
-&= R_{-2\theta};\\
-\pi\left(
-\begin{bmatrix}
-a & b\\
-c & d
-\end{bmatrix}
-\right)
-&=
-\left(
-z \mapsto \frac{az+b}{cz + d},
-\right),
-\end{align*}
-the following diagram is commutative:
-\begin{equation}\label{spinStructureHDiagram}
-\begin{tikzpicture}[baseline=(current  bounding  box.center)]
-  \matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
-  {
-      \slinear_2(\RR)& \spin(2) \\
-      \psl & \so(2) \\
-	    \HH & {} \\  
-  };
-  \path
-    (m-1-1) edge node [ above] {} (m-1-2)
-    (m-2-1)	edge node [below] {} (m-2-2);
-    
-    
-  \path[->] 
-  	(m-1-1) edge node [left]{$\pi$} (m-2-1)
-  	(m-1-2)	edge node [right] {$\pi'$} (m-2-2)
-  	(m-2-1) edge node [left] {} (m-3-1);
-\end{tikzpicture}
-\end{equation}
-and hence $\HH$ admits a spin structure with $P_{\spin(2)}\HH \simeq \slinear_2(\RR)$.
+$\slinear_2(\RR)$ is a spin structure over the hyperbolic plane $\HH$.
 \end{proposition}
 \begin{proof}
-We start with the first part. If $A\in \slinear_2(\RR)$ and $z\in \HH$ then by $Az$ we naturally understand:
+Consider the following diagram:
+	\begin{equation}\label{sl2spinstructure}
+		\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+			\matrix (m) [matrix of math nodes,row sep=2em,column sep=2em,minimum width=2em]
+			{
+				\slinear_2(\RR) & \so(2) & \spin(2) \\
+				\psl & \pso(2) \\
+				P_{\so(2)}\HH & \so(2) \\
+				\HH & {} \\  
+			};
+			\path
+			(m-1-1) edge node [ above] {} (m-1-2)
+			(m-2-1)	edge node [below] {} (m-2-2)
+			(m-3-1)	edge node [below] {} (m-3-2);
+			
+			\path[<-]
+			(m-1-2) edge node [ above] {$\phi$} (m-1-3);
+			
+			\path[->] 
+			(m-1-1) edge node [left]{$\tilde{\pi}$} (m-2-1)
+			(m-1-2)	edge node [right] {$\tilde{\pi}'$} (m-2-2)
+			(m-2-2)	edge node [right] {$f$} (m-3-2)
+			(m-2-1)	edge node [right] {$F$} (m-3-1)
+			(m-2-1) edge node [left] {} (m-3-1)
+			(m-1-3) edge[dashed] node [left] {} (m-3-2)
+			(m-3-1) edge node [left] {} (m-4-1);
+		\end{tikzpicture}
+	\end{equation}
+where $\phi(r_{\theta}):=R_{-\theta}$ is an isomorphism and $\tilde{\pi},\tilde{\pi}'$ are the canonical projections. Choosing $\phi$ in this way we obtain that 
 \begin{align*}
-A = 
-\begin{bmatrix} a & b \\ c & d   \end{bmatrix};
-&&
-Az := \frac{az+b}{cz +d}.
+	f\circ \tilde{\pi}'\circ \phi (r_{\theta}) = R_{2\theta} = \pi'(r_{\theta}).
 \end{align*}
 By the Iwasawa decomposition theorem, every $A\in \slinear_2(\RR)$ can be uniquely written as:
 \begin{align*}
@@ -277,7 +269,7 @@ A &=
 =: T(\Re(Ai))D\left(\sqrt{\Im(Ai)}\right)R_{\theta}
 ,
 \end{align*}
-for some $\theta \in [0,2\pi]$. Thus, the fibre over $\HH$ at a given point $z=Ai$ is given by all the matrices that map $i$ into $z$, namely:
+for some $\theta \in [0,2\pi]$. The fibre over $\HH$ at a given point $z=Ai$ is given by all the matrices that map $i$ into $z$, namely:
 \begin{align*}
 (\slinear_2(\RR))_z = 
 \left\lbrace
@@ -286,58 +278,36 @@ T(\Re z)D\left( \sqrt{\Im z}\right) R_{\theta}
 \theta \in [0,2\pi]
 \right\rbrace.
 \end{align*}
-Clearly, the group $\left\lbrace
-R_{\theta}
-:
-\theta \in [0,2\pi]
-\right\rbrace$ acts freely and transitively on the fibres $(\slinear_2(\RR))_z$ and thus $\slinear_2(\RR)$ is a principal bundle with group $\spin(2)$ over $\HH$. 
+Thus, via $\phi$, $\slinear_2(\RR)$ is a $\spin(2)$ principal bundle. Since $F$ is a isomorphism, the map $F\circ \tilde{\pi}$ is a two sheeted covering. Finally, we need to check that the diagram respects the principal bundle structure. For a matrix $A\in \slinear_2(\RR)$ and for $r_{\theta}\in \spin(2)$ we have:
+\begin{align*}
+	F(\tilde{\pi}(A\phi(r_{\theta}))) 
+	&= 
+	\left( AR_{-\theta}i, 
+	\left\lbrace (AR_{-\theta})_{*,i} \frac{\partial}{\partial x}, (AR_{-\theta})_{*,i} \frac{\partial}{\partial y} \right\rbrace \right)\\
+	&=
+	\left( Ai, 
+	\left\lbrace A_{*,i} \left( \cos 2\theta \frac{\partial}{\partial x} + \sin 2\theta \frac{\partial}{\partial y} \right), A_{*,i}\left( -\sin 2\theta \frac{\partial}{\partial x} + \cos 2\theta \frac{\partial}{\partial y}\right) \right\rbrace \right)\\
+	&=
+	\left( Ai, 
+	\left\lbrace A_{*,i} \frac{\partial}{\partial x}, A_{*,i}\frac{\partial}{\partial y} \right\rbrace R_{2\theta} \right)
+	=
+	F(p(A)) f(\tilde{\pi}'(\phi(r_{\theta}))).
+\end{align*}
 
-For the second part, notice that the isometries $(z\mapsto T(\Im z))$ and $(z\mapsto D(\sqrt{\Re z)})$ act as the identity on the oriented frames. Therefore it is enough to check that the diagram $(\ref{spinStructureHDiagram})$ is commutative only for matrices in the fibre over $i\in \HH$:
-\begin{align*}
-(R_{\theta})_{*,i}\left( \frac{\partial}{\partial x} \right)
-&=
-\left. \frac{\partial}{\partial x} \right|_{x+iy=i} \left( \frac{x\cos \theta + iy\cos \theta - \sin \theta}{x\sin \theta + iy\sin \theta + \cos \theta} \right) = \cos 2\theta - i \sin 2\theta
-\simeq 
-\begin{bmatrix}
-\cos 2\theta \\
--\sin 2\theta
-\end{bmatrix}
-;\\
-(R_{\theta})_{*,i}\left( \frac{\partial}{\partial y} \right)
-&=
-\left. \frac{\partial}{\partial y} \right|_{x+iy=i} \left( \frac{x\cos \theta + iy\cos \theta - \sin \theta}{x\sin \theta + iy\sin \theta + \cos \theta} \right) = i(\cos 2\theta - i \sin 2\theta)
-\simeq 
-\begin{bmatrix}
-\sin 2\theta \\
-\cos 2\theta
-\end{bmatrix}
-.
-\end{align*}
-This leads to:
-\begin{align*}
-(R_{\theta})_{*,i}:T_i\HH \longrightarrow T_i\HH
-&&
-(R_{\theta})_{*,i}\simeq
-\begin{bmatrix}
-\cos 2\theta & \sin 2\theta \\
--\sin 2\theta & \cos 2\theta
-\end{bmatrix},
-\end{align*}
-and thus $\pi(R_{\theta})=R(-2\theta)=\pi(I_2)\pi'(R_{\theta})$.
 \end{proof}
 
 \begin{proposition}\label{oneSpinStructure}
 There exists only one spin structure over $\HH$ up to isomorphism.
 \end{proposition}
 \begin{proof}
-Consider a spin structure over $\HH$, namely a $\spin(2)$ principal bundle $P$ covering $P_{\so(2)}\HH$ making diagram $(\ref{spinStructureDiagram})$ commute. Our aim is to find an isomorphism $\phi$ such that the following diagram:
+Consider $P$ a spin structure over $\HH$. Our aim is to find an isomorphism $\varphi$ compatible with the $\spin(2)$ principal bundle structure such that the following diagram commutes:
 \begin{equation}\label{diagramPiPhi}
 \begin{tikzcd}
-P \arrow{dr}[swap]{\pi} \arrow[dashed]{rr}{\phi} && \slinear_2(\RR) \arrow{dl}{\pi} \\
+P \arrow{dr}[swap]{\pi} \arrow[dashed]{rr}{\varphi} && \slinear_2(\RR) \arrow{dl}{\pi} \\
 & P_{\so(2)}\HH
 \end{tikzcd}
 \end{equation}
-commutes as well. Since $\HH$ is simply connected $P_{\so(2)}\HH$ is trivial and can be identified with $\HH\times \so(2)$. Take $s(z):=\left( z,\begin{bmatrix}
+Since $\HH$ is simply connected, $P_{\so(2)}\HH$ is trivial and can be identified with $\HH\times \so(2)$. Take $s(z):=\left( z,\begin{bmatrix}
 1 & 0 \\
 0 & 1
 \end{bmatrix} \right)$ the standard global section and lift it to $P$:
@@ -354,13 +324,13 @@ commutes as well. Since $\HH$ is simply connected $P_{\so(2)}\HH$ is trivial and
     (m-2-1)	edge [dashed] node [above] {$\tilde{s}$} (m-1-2);
 \end{tikzpicture}
 \end{equation*}
-Note that $\phi : P \longrightarrow \slinear_2(\RR)$ must be compatible with the right $\spin(2)$ right multiplication, hence it is enough to define it on $\tilde{s}$:
+We define $\varphi$ on $\tilde{s}$ and then extend it to be compatible with the $\spin(2)$ right multiplication:
 \begin{align*}
 \phi(\tilde{s}(z)) := T(\Re(z))D(\sqrt{\Im(z)}).
 \end{align*}
-Every $p\in P$ can be uniquely written as $\tilde{s} R$, for $R\in \spin(2)$, hence, we have that:
+Every $p\in P$ can be uniquely written as $\tilde{s} r_{\theta}$, for $r_{\theta}\in \spin(2)$, hence, we have that:
 \begin{align*}
-\pi(p) = \pi(\tilde{s}R) = s\pi'(R) = \pi\left( T(\Re(z))D(\sqrt{\Im(z)})\right) \pi'(R),
+\pi(p) = \pi(\tilde{s}r_{\theta}) = s\pi'(r_{\theta}) = \pi\left( T(\Re(z))D(\sqrt{\Im(z)})\right) \pi'(r_{\theta}),
 \end{align*}
 which concludes the proof.
 \end{proof}
@@ -400,7 +370,7 @@ Clearly, from Proposition \ref{spinStructureForH}, the quotient $\rho(\G)\setmin
 \end{equation*}
 is commutative, since:
 \begin{align*}
-\pi([AR_{\theta}])=[\pi(AR_{\theta}]=[\pi(A)\pi'(R_{\theta})]=\pi([A])R(-2\theta).
+\pi([Ar_{\theta}])=[\pi(Ar_{\theta}]=[\pi(A)\pi'(r_{\theta})]=\pi([A])R_{2\theta}.
 \end{align*}
 
 Now let us consider a spin structure on $\G \setminus \HH$ and denote by $p:\HH \longrightarrow \G\setminus \HH$ the canonical projection. Since the group $\G$ acts on the frame bundle over $\HH$, we get that the pull-back bundle $p^*(P_{\so(2)}(\G\setminus \HH))$ is isomorphic to $P_{\so(2)} \HH$. We consider the following pull-back:
@@ -424,19 +394,19 @@ Now let us consider a spin structure on $\G \setminus \HH$ and denote by $p:\HH 
   	(m-2-2) edge node [right] {} (m-3-2);
 \end{tikzpicture}
 \end{equation}
-Clearly $p^*(P_{\spin(2)}(\G\setminus \HH))$ defines a spin structure, hence, from Proposition $\ref{oneSpinStructure}$, there exists an isomorphism $\phi:p^*(P_{\spin(2)}(\G\setminus \HH)) \longrightarrow \slinear_2(\RR)$. Moreover, there exists a canonical action $\rho'$ of $\G$ on the bundle $p^*(P_{\spin(2)}(\G\setminus \HH))$. For $\g\in \G$, $\rho'(\g)$ moves a base point $z$ to $\g z$ and acts as the identity on the respective fibres. Therefore, we can define the function $\rho$ on $\G$ as follows: 
+Clearly $p^*(P_{\spin(2)}(\G\setminus \HH))$ defines a spin structure, hence, from Proposition $\ref{oneSpinStructure}$, there exists an isomorphism $\varphi:p^*(P_{\spin(2)}(\G\setminus \HH)) \longrightarrow \slinear_2(\RR)$. Moreover, there exists a canonical action $\rho'$ of $\G$ on the bundle $p^*(P_{\spin(2)}(\G\setminus \HH))$. For $\g\in \G$, $\rho'(\g)$ moves a base point $z$ to $\g z$ and acts as the identity on the respective fibres. Therefore, we can define the function $\rho$ on $\G$ as follows: 
 \begin{align*}
-\rho(\g) = \phi \circ\rho'(\g)\circ \phi^{-1}.
+\rho(\g) = \varphi \circ\rho'(\g)\circ \varphi^{-1}.
 \end{align*}
 In this way, $\rho(\g)$ is a $\spin(2)$ principal bundle isomorphism. Our aim is to show that, in fact, $\rho(\g)$ is actually a matrix that lies in $\tilde{\G}$. For $q\in \slinear_2(\RR)$, using diagrams $(\ref{diagramPiPhi})$, $(\ref{diagramPullBack})$ and again $(\ref{diagramPiPhi})$, we have that:
 \begin{align*}
 \pi(\rho(\g)q)
 &=
-\pi(\phi \circ \rho'(\g) \circ \phi^{-1}(q))
+\pi(\varphi \circ \rho'(\g) \circ \varphi^{-1}(q))
 =
-\pi(\rho'(\g) \circ \phi^{-1}(q))
+\pi(\rho'(\g) \circ \varphi^{-1}(q))
 =
-\g\pi(\phi^{-1}(q))
+\g\pi(\varphi^{-1}(q))
 =
 \g\pi(q).
 \end{align*}
